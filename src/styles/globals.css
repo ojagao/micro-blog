@@ -5,15 +5,40 @@ a {
     text-decoration: none;
     color: rgb(0, 0, 0);
 }
-img {
-    max-width: 600px;
-}
 svg {
     display: inline-block;
 }
-h3 {
-    font-size: 20px;
-}
 body {
-    background: #d2d2d2;
+    background: #ffffff;
+}
+footer {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    height: 300px;
+}
+/* 記事内容の整形 タグに対する指定*/
+#article p {
+    line-height: 1.75em;
+    padding: 12px 0;
+}
+#article h2 {
+    padding: 8px 0 ;
+    border-bottom: 1px solid;
+    padding-bottom: 4px;
+    margin-top: 24px;
+}
+#article h3 {
+    font-size: 20px;
+    border-bottom: 1px solid;
+    padding-bottom: 4px;
+    margin-top: 24px;
+}
+#article figure {
+    padding: 8px;
+    margin: 12px 0;
+}
+#article pre {
+    background: #000;
+    color: white;
+    padding: 16px;
 }

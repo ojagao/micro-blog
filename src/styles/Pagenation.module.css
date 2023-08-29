@@ -1,0 +1,26 @@
+.pagenation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    width: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 48px;
+}
+
+.pagenation::after {
+    content: ">";
+    position: absolute;
+    right: 0;
+}
+.pagenation::before {
+    content: "<";
+    position: absolute;
+    left: 0;
+}
+
+.pagenation_number {
+    padding: 8px;
+}

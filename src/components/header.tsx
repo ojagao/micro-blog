@@ -10,8 +10,8 @@ const Header = () => {
         <header>
             <nav className={styles.nav_bar}>
                 <Link className={styles.icon_box} href="/">
-                    <Image src="/images/AI.png" alt="icon" width={50} height={50} />
-                    <h1 className={styles.h1}>AI & Web</h1>
+                    <Image src="/images/AI.png" alt="icon" width={50} height={50} priority/>
+                    <h1 className={styles.h1}>AI・Web・Programingを学ぼう</h1>
                 </Link>
                 <ul className={styles.link_list}>
                     <li className={styles.header_hover}>

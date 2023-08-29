@@ -1,14 +1,12 @@
 import Header from "@/components/header";
 import { client } from "../../libs/client";
 import Image from "next/image";
-
-interface Blog {
-    title: string;
-    publishedAt: string;
-    eyecatch: {
-        url: string;
-    };
-}
+import Rightbar from "@/components/Rightbar";
+import styles from "../../../src/styles/blog.module.css";
+import * as Icon from "react-feather";
+import { Blogs, Categories, Tags } from "@/types/type";
+import Footer from "@/components/Footer";
+import { useEffect, useState } from "react";
 
 interface Content {
     id: string;
@@ -17,18 +15,41 @@ interface Content {
 interface Context {
     params: {
         id: string;
-    }
+    };
 }
 
-export default function BlogId({ blog }: { blog: Blog }) {
+export default function BlogId({ blogs, category, tag }: { blogs: Blogs, category: Categories[], tag: Tags[] }) {
+    const [contentHeight, setContentHeight] = useState(0);
+
+    useEffect(() => {
+        const contentH = document.getElementById("__next")?.clientHeight;
+        setContentHeight(contentH || 0);
+    }, []);
     return (
         <>
             <Header />
-            <main>
-                <h1>{blog.title}</h1>
-                <p>{blog.publishedAt}</p>
-                <Image src={blog.eyecatch.url} width={360} height={240} alt="アイキャッチの画像"/>
-            </main>
+            <div className={styles.contents_inner}>
+                <main className={styles.contents_main}>
+                    <Image className={styles.thumbnail} src={blogs.eyecatch.url} width={820} height={410} alt="サムネイルの画像" />
+                    <div className={styles.article_inner}>
+                        <h2 className={styles.article_title}>{blogs.title}</h2>
+                        <div className={styles.flex_center}>
+                            <time className={styles.date}>{blogs.publishedAt.slice(0, 10).replace(/-/g, "/")}</time>
+                            <span className={styles.flex_center}>
+                                {blogs.tag.map((tagItem) => (
+                                    <div className={`${styles.tag} ${styles.flex_center}`} key={tagItem.tag}>
+                                        <Icon.Tag />
+                                        <p>{tagItem.tag}</p>
+                                    </div>
+                                ))}
+                            </span>
+                        </div>
+                        <div id="article" className={styles.article_conetnt} dangerouslySetInnerHTML={{ __html: blogs.content }} />
+                    </div>
+                </main>
+                <Rightbar  category={category} tag={tag} contentHeight={contentHeight} />
+            </div>
+            <Footer />
         </>
     );
 }
@@ -45,10 +66,16 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: Context) => {
     const id = context.params.id;
     const data = await client.get({ endpoint: "blogs", contentId: id });
+    // カテゴリーコンテンツの取得
+    const categoryData = await client.get({ endpoint: "categories" });
+    // タグコンテンツの取得
+    const tagData = await client.get({ endpoint: "tag" });
 
     return {
         props: {
-            blog: data,
+            blogs: data,
+            category: categoryData.contents,
+            tag: tagData.contents,
         },
     };
 };

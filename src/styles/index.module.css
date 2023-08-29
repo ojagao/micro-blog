@@ -1,0 +1,14 @@
+.contents_inner {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1130px;
+    margin: 40px auto 80px;
+}
+
+@media screen and (max-width : 1140px) {
+    .contents_inner {
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+    }
+}

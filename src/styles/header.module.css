@@ -68,3 +68,15 @@
 .header_hover:hover .hover_open {
     height: 13em;
 }
+
+@media screen and (max-width : 800px) {
+    .h1 {
+        display: none;
+    }
+    .nav_bar {
+        padding: 10px 8px;
+    }
+    .link_list {
+        gap: 16px;
+    }
+}
