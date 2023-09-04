@@ -107,8 +107,6 @@ const Rightbar: React.FC<RightbarProps> = ({ category, tag, contentHeight }) => 
 
                     const rightBarBottomScroll = rightBarHeight + window.scrollY;
 
-                    console.log(rightBarBottomScroll + ":" + stopLine)
-
                     if (rightBarBottomScroll > stopLine) {
                         rightBarRef.current.classList.add(styles.stop);
                         const topValue = stopLine - rightBarHeight;
@@ -125,7 +123,7 @@ const Rightbar: React.FC<RightbarProps> = ({ category, tag, contentHeight }) => 
                 window.removeEventListener("scroll", handleScroll);
             };
         }
-    }, [windowHeight]);
+    }, [windowHeight, contentHeight, rightBarHeight,rightBarTopPosition]);
 
     // スクロールに合わせて追従する
 
@@ -141,7 +139,7 @@ const Rightbar: React.FC<RightbarProps> = ({ category, tag, contentHeight }) => 
                     </div>
                     <p className={styles.my_description}>札幌のデザイン会社でWEBの更新、LPの作成などを行いながらフロント領域を学習中</p>
                     <div className={styles.sns_card}>
-                        <p> ー Shall We Follow ー　</p>
+                        <p>ー Shall We Follow ー</p>
                         <div className={styles.sns_icons}>
                             <Icon.Twitter />
                             <Icon.GitHub />
