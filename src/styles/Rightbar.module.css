@@ -22,7 +22,7 @@
     background: #ffffff;
     -webkit-box-shadow: 12px 12px 24px #b3b3b3, -12px -12px 24px #f2f2f2;
     box-shadow: 12px 12px 24px #b3b3b3, -12px -12px 24px #f2f2f2;
-    width: 280px;
+    max-width: 280px;
     height: 340px;
     padding: 16px;
     margin: 0 auto;
