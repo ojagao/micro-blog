@@ -12,6 +12,10 @@
 }
 
 /* 通常のCSS */
+.rightbar {
+    position: sticky;
+    top: 0;
+}
 .rightbar_inner {
     width: 280px;
     margin: 0 auto;
