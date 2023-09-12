@@ -18,7 +18,7 @@ interface Context {
     };
 }
 
-export default function BlogId({ blogs, category, tag }: { blogs: Blogs, category: Categories[], tag: Tags[] }) {
+export default function BlogId({ blogs, category, tag }: { blogs: Blogs; category: Categories[]; tag: Tags[] }) {
     const [contentHeight, setContentHeight] = useState(0);
 
     useEffect(() => {
@@ -47,7 +47,9 @@ export default function BlogId({ blogs, category, tag }: { blogs: Blogs, categor
                         <div id="article" className={styles.article_conetnt} dangerouslySetInnerHTML={{ __html: blogs.content }} />
                     </div>
                 </main>
-                <Rightbar  category={category} tag={tag} contentHeight={contentHeight} />
+                <aside className={styles.side_bar}>
+                    <Rightbar category={category} tag={tag} contentHeight={contentHeight} />
+                </aside>
             </div>
             <Footer />
         </>
