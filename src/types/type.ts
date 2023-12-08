@@ -20,3 +20,7 @@ export interface Tags {
     id: string;
     tag: string ;
 }
+
+export interface Context {
+    params: { id: string; };
+}

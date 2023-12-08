@@ -20,6 +20,9 @@
     box-shadow: 12px 12px 24px #b3b3b3, -12px -12px 24px #f2f2f2;
     transition: 0.5s;
 }
+.article_card img {
+    width: 30%;
+}
 .article_card:hover {
     -webkit-box-shadow: 8px 8px 8px #b3b3b3, -8px -8px 8px #f2f2f2;
     box-shadow: 8px 8px 8px #b3b3b3, -8px -8px 8px #f2f2f2;
@@ -29,6 +32,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    width: 65%;
 }
 .thumbnail {
     border-radius: 27px;

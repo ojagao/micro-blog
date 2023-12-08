@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "../../src/styles/Pagenation.module.css"
 
 const Pagenation = ({ totalCount }: { totalCount: number }) => {
-    const PER_PAGE = 5;
+    const PER_PAGE = 7;
 
     const range = (start :number, end: number) => [...Array(end - start + 1)].map((_, i) => start + i);
 
