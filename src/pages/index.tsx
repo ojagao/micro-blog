@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
 import Header from "@/components/header";
 import TopBody from "@/components/TopBody";
 import { client } from "../libs/client";
@@ -7,7 +6,6 @@ import { Blogs, Categories, Tags } from "@/types/type";
 import styles from "../../src/styles/index.module.css";
 import Rightbar from "@/components/Rightbar";
 import Footer from "@/components/Footer";
-import Pagenation from "@/components/Pagenation";
 import { useEffect, useState } from "react";
 
 export default function Home({ blog, category, tag, totalCount }: { blog: Blogs[]; category: Categories[]; tag: Tags[]; totalCount: number }) {
@@ -24,7 +22,7 @@ export default function Home({ blog, category, tag, totalCount }: { blog: Blogs[
                 <meta name="description" content="他の方々の助けになれば嬉しいなという想いでAIを触ったりプログラミングをしたり、Web系エンジニアを目指す中で気づいたことを共有します" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 {/* 決まっていないアイコン */}
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/images/AI.png" />
             </Head>
             <Header />
             <div className={styles.contents_inner}>
@@ -39,7 +37,7 @@ export default function Home({ blog, category, tag, totalCount }: { blog: Blogs[
 }
 
 export const getStaticProps = async () => {
-    const data = await client.get({ endpoint: "blogs", queries: { offset: 0, limit: 10 } });
+    const data = await client.get({ endpoint: "blogs", queries: { offset: 0, limit: 6 } });
     // カテゴリーコンテンツの取得
     const categoryData = await client.get({ endpoint: "categories" });
     // タグコンテンツの取得

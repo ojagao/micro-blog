@@ -1,11 +1,11 @@
 .contents_inner {
     display: flex;
     justify-content: space-between;
-    max-width: 1130px;
+    max-width: 1030px;
     margin: 40px auto 80px;
 }
 
-@media screen and (max-width : 1140px) {
+@media screen and (max-width : 1040px) {
     .contents_inner {
         flex-direction: column;
         align-items: center;

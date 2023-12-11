@@ -100,7 +100,7 @@
 .tag_svg {
     width: 1.1rem;
 }
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 1040px) {
     .rightbar_inner {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -128,16 +128,4 @@
 }
 .stop {
     position: absolute;
-}
-
-@media screen and (max-width: 1140px) {
-    .sticky {
-        position: unset;
-    }
-    .under_sticky {
-        position: unset;
-    }
-    .stop {
-        position: unset;
-    }
 }

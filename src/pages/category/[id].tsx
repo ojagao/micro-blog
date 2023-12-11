@@ -2,8 +2,7 @@ import Link from "next/link";
 import { client } from "../../libs/client";
 import { Blogs, Categories, Context, Tags } from "@/types/type";
 import Header from "@/components/header";
-// 仮のCSS
-import styles from "../../../src/styles/TopBody.module.css";
+import styles from "../../../src/styles/category.module.css";
 import Rightbar from "@/components/Rightbar";
 import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
@@ -13,9 +12,9 @@ import Pagenation from "@/components/Pagenation";
 
 export default function CategoryId({ blogs, totalCount, category, tag }: { blogs: Blogs[]; totalCount: number; category: Categories[]; tag: Tags[] }) {
     // カテゴリーに紐付いたコンテンツがない場合に表示
-    // if (!blogs) {
-    //     return <div>ブログコンテンツがありません</div>;
-    // }
+    if (!blogs) {
+        return <div>ブログコンテンツがありません</div>;
+    }
 
     const [contentHeight, setContentHeight] = useState(0);
 
@@ -29,7 +28,7 @@ export default function CategoryId({ blogs, totalCount, category, tag }: { blogs
     return (
         <>
             <Header />
-            <div className="article_card">
+            <div className={styles.article_card}>
                 <article className={styles.contents_main}>
                     <p className={styles.article_list}>記事の一覧</p>
                     <ul>
@@ -89,7 +88,8 @@ export const getStaticProps = async (context: Context) => {
 
     return {
         props: {
-            blog: data.contents,
+            blogs: data.contents,
+            totalCount: data.totalCount,
             category: categoryData.contents,
             tag: tagData.contents,
         },

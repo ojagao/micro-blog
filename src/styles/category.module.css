@@ -1,0 +1,6 @@
+.article_card {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1030px;
+    margin: 40px auto 80px;
+}

@@ -20,7 +20,7 @@ footer {
 /* 記事内容の整形 タグに対する指定*/
 #article p {
     line-height: 1.75em;
-    padding: 12px 0;
+    padding: 12px 8px;
 }
 #article h2 {
     padding: 8px 0 ;
