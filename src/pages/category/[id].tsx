@@ -19,40 +19,38 @@ export default function CategoryId({ blogs, totalCount, category, tag }: { blogs
         setContentHeight(contentH || 0);
     }, []);
 
-    console.log(blogs);
-
     return (
         <>
             <Header />
             <div className={styles.contents_inner}>
                 <article className={styles.contents_main}>
-                    <p className={styles.article_list}>記事の一覧</p>
+                    {blogs ? <p className={styles.article_list}>{blogs[0]?.category.name ?? ""}の記事の一覧</p> : <p>記事の一覧</p>}
                     <ul>
                         {blogs?.map((blog) => (
-                                <Link href={`/blog/${blog.id}`} key={blog.id}>
-                                    <li className={styles.article_card}>
-                                        <Image className={styles.thumbnail} src={blog.eyecatch.url} alt="サムネイル" width={300} height={150} priority />
-                                        <div className={styles.article_card_right}>
-                                            <h3 className={styles.article_title}>{blog.title}</h3>
-                                            <div className={`${styles.flex_center} ${styles.mt_12} ${styles.sp_colum}`}>
-                                                <span className={styles.category}>{blog.category.name}</span>
-                                                <span className={styles.flex_center}>
-                                                    {blog.tag.map((tagItem) => (
-                                                        <div className={`${styles.tag} ${styles.flex_center}`} key={tagItem.tag}>
-                                                            <Icon.Tag />
-                                                            <p>{tagItem.tag}</p>
-                                                        </div>
-                                                    ))}
-                                                </span>
-                                            </div>
-                                            <div className={`${styles.flex_center} ${styles.mt_12}`}>
-                                                <Icon.Clock />
-                                                <time className={styles.date}>{blog.publishedAt.slice(0, 10).replace(/-/g, "/")}</time>
-                                            </div>
+                            <Link href={`/blog/${blog.id}`} key={blog.id}>
+                                <li className={styles.article_card}>
+                                    <Image className={styles.thumbnail} src={blog.eyecatch.url} alt="サムネイル" width={300} height={150} priority />
+                                    <div className={styles.article_card_right}>
+                                        <h3 className={styles.article_title}>{blog.title}</h3>
+                                        <div className={`${styles.flex_center} ${styles.mt_12} ${styles.sp_colum}`}>
+                                            <span className={styles.category}>{blog.category.name}</span>
+                                            <span className={styles.flex_center}>
+                                                {blog.tag.map((tagItem) => (
+                                                    <div className={`${styles.tag} ${styles.flex_center}`} key={tagItem.tag}>
+                                                        <Icon.Tag />
+                                                        <p>{tagItem.tag}</p>
+                                                    </div>
+                                                ))}
+                                            </span>
                                         </div>
-                                    </li>
-                                </Link>
-                            )
+                                        <div className={`${styles.flex_center} ${styles.mt_12}`}>
+                                            <Icon.Clock />
+                                            <time className={styles.date}>{blog.publishedAt.slice(0, 10).replace(/-/g, "/")}</time>
+                                        </div>
+                                    </div>
+                                </li>
+                            </Link>
+                        )
                         ) ?? <div className={styles.article_card}>対象カテゴリーのコンテンツがありません</div>
                         }
                     </ul>
