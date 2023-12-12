@@ -28,8 +28,7 @@ export default function CategoryId({ blogs, totalCount, category, tag }: { blogs
                 <article className={styles.contents_main}>
                     <p className={styles.article_list}>記事の一覧</p>
                     <ul>
-                        {blogs ? (
-                            blogs.map((blog) => (
+                        {blogs?.map((blog) => (
                                 <Link href={`/blog/${blog.id}`} key={blog.id}>
                                     <li className={styles.article_card}>
                                         <Image className={styles.thumbnail} src={blog.eyecatch.url} alt="サムネイル" width={300} height={150} priority />
@@ -53,8 +52,8 @@ export default function CategoryId({ blogs, totalCount, category, tag }: { blogs
                                         </div>
                                     </li>
                                 </Link>
-                            ))
-                        ) : (
+                            )
+                        ) ?? (
                             <div>ブログコンテンツがありません</div>
                         )}
                     </ul>
