@@ -88,7 +88,7 @@ export const getStaticProps = async (context: Context) => {
 
     return {
         props: {
-            blogs: data.contents,
+            blogs: data.contents || [], 
             totalCount: data.totalCount,
             category: categoryData.contents,
             tag: tagData.contents,
