@@ -11,12 +11,12 @@
 }
 
 .pagenation::after {
-    content: ">";
+    content: "・";
     position: absolute;
     right: 0;
 }
 .pagenation::before {
-    content: "<";
+    content: "・";
     position: absolute;
     left: 0;
 }

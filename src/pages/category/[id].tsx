@@ -28,7 +28,7 @@ export default function CategoryId({ blogs, totalCount, category, tag }: { blogs
     return (
         <>
             <Header />
-            <div className={styles.article_card}>
+            <div className={styles.contents_inner}>
                 <article className={styles.contents_main}>
                     <p className={styles.article_list}>記事の一覧</p>
                     <ul>
@@ -62,7 +62,9 @@ export default function CategoryId({ blogs, totalCount, category, tag }: { blogs
 
                     <Pagenation totalCount={totalCount} />
                 </article>
-                <Rightbar  category={category} tag={tag} contentHeight={contentHeight} />
+                <aside className={styles.side_bar}>
+                    <Rightbar category={category} tag={tag} contentHeight={contentHeight} />
+                </aside>
             </div>
             <Footer />
         </>
