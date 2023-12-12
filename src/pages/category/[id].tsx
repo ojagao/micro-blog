@@ -53,9 +53,8 @@ export default function CategoryId({ blogs, totalCount, category, tag }: { blogs
                                     </li>
                                 </Link>
                             )
-                        ) ?? (
-                            <div>ブログコンテンツがありません</div>
-                        )}
+                        ) ?? <div className={styles.article_card}>対象カテゴリーのコンテンツがありません</div>
+                        }
                     </ul>
                     <Pagenation totalCount={totalCount} />
                 </article>
@@ -87,7 +86,7 @@ export const getStaticProps = async (context: Context) => {
 
     return {
         props: {
-            blogs: data.contents ?? [], 
+            blogs: data.contents.length > 0 ? data.contents : null,
             totalCount: data.totalCount,
             category: categoryData.contents,
             tag: tagData.contents,
