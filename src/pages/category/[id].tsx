@@ -57,9 +57,7 @@ export default function CategoryId({ blogs, totalCount, category, tag }: { blogs
                         ) : (
                             <div>ブログコンテンツがありません</div>
                         )}
-
                     </ul>
-
                     <Pagenation totalCount={totalCount} />
                 </article>
                 <aside className={styles.side_bar}>
