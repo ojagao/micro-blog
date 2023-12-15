@@ -9,22 +9,46 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import * as Icon from "react-feather";
 import Pagenation from "@/components/Pagenation";
+import { useRouter } from "next/router";
 
 export default function CategoryId({ blogs, totalCount, category, tag }: { blogs: Blogs[]; totalCount: number; category: Categories[]; tag: Tags[] }) {
-
     const [contentHeight, setContentHeight] = useState(0);
+    const [TagId, setTagId] = useState<string | undefined>(undefined);
 
     useEffect(() => {
         const contentH = document.getElementById("__next")?.clientHeight;
         setContentHeight(contentH || 0);
     }, []);
 
+    const router = useRouter();
+
+    useEffect(() => {
+        // ページの読み込みが完了した後に実行されるコード
+        const { id } = router.query;
+        setTagId(Array.isArray(id) ? id[0] : id || "");
+    }, [router.query]);
+
     return (
         <>
             <Header category={category} />
             <div className={styles.contents_inner}>
                 <article className={styles.contents_main}>
-                    {blogs ? <p className={styles.article_list}>{blogs[0]?.category.name ?? ""}の記事の一覧</p> : <p>記事の一覧</p>}
+                    {/* {blogs ? <p className={styles.article_list}>{blogs[0].tag.filter(item => item.id === tagId) ?? ""}の記事の一覧</p> : <p>記事の一覧</p>}      .map((filteredItem) => filteredItem.tag) */}
+                    {tag.length > 0 && tag.filter((item) => item.id === TagId) ? (
+                        <div className={styles.article_list}>
+                            <div className={styles.flex_center}>
+                                <Icon.Tag className={styles.tag_svg} />
+                                {tag
+                                    .filter((item) => item.id === TagId)
+                                    .map((filteredItem) => (
+                                        <span key={filteredItem.id}>{filteredItem.tag}</span>
+                                    ))}
+                                の記事の一覧
+                            </div>
+                        </div>
+                    ) : (
+                        <p>記事の一覧</p>
+                    )}
                     <ul>
                         {blogs?.map((blog) => (
                             <Link href={`/blog/${blog.id}`} key={blog.id}>
@@ -50,9 +74,7 @@ export default function CategoryId({ blogs, totalCount, category, tag }: { blogs
                                     </div>
                                 </li>
                             </Link>
-                        )
-                        ) ?? <div className={styles.article_card}>対象カテゴリーのコンテンツがありません</div>
-                        }
+                        )) ?? <div className={styles.article_card}>対象カテゴリーのコンテンツがありません</div>}
                     </ul>
                     <Pagenation totalCount={totalCount} />
                 </article>
@@ -67,16 +89,16 @@ export default function CategoryId({ blogs, totalCount, category, tag }: { blogs
 
 // 静的生成のためのパスを指定します
 export const getStaticPaths = async () => {
-    const data = await client.get({ endpoint: "categories" });
+    const data = await client.get({ endpoint: "tag" });
 
-    const paths = data.contents.map((content: Categories) => `/category/${content.id}`);
+    const paths = data.contents.map((content: Categories) => `/tag/${content.id}`);
     return { paths, fallback: false };
 };
 
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async (context: Context) => {
     const id = context.params.id;
-    const data = await client.get({ endpoint: "blogs", queries: { filters: `category[equals]${id}` } });
+    const data = await client.get({ endpoint: "blogs", queries: { filters: `tag[contains]${id}` } });
     // カテゴリーコンテンツの取得
     const categoryData = await client.get({ endpoint: "categories" });
     // タグコンテンツの取得

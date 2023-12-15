@@ -27,7 +27,7 @@ export default function BlogId({ blogs, category, tag }: { blogs: Blogs; categor
     }, []);
     return (
         <>
-            <Header />
+            <Header category={category} />
             <div className={styles.contents_inner}>
                 <main className={styles.contents_main}>
                     <Image className={styles.thumbnail} src={blogs.eyecatch.url} width={820} height={410} alt="サムネイルの画像" />

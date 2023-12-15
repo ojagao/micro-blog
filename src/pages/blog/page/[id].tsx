@@ -30,7 +30,7 @@ export default function BlogPageId({ blog, category, tag, totalCount }: { blog: 
     }, []);
     return (
         <div>
-            <Header />
+            <Header category={category} />
             <div className={style.contents_inner}>
                 <article className={styles.contents_main}>
                     <p className={styles.article_list}>記事の一覧</p>

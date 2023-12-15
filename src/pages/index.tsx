@@ -24,7 +24,7 @@ export default function Home({ blog, category, tag, totalCount }: { blog: Blogs[
                 {/* 決まっていないアイコン */}
                 <link rel="icon" href="/images/AI.png" />
             </Head>
-            <Header />
+            <Header category={category} />
             <div className={styles.contents_inner}>
                 <TopBody blogs={blog}  totalCount={totalCount} />
                 <aside className={styles.side_bar}>

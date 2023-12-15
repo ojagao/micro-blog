@@ -46,27 +46,37 @@
     width: 100%;
 }
 
-.header_hover {
-    position: relative;
+.category_name {
+    color: white;
 }
 
 .hover_open {
     position: absolute;
-    width: 120%;
-    top: 1.5em;
-    left: 0;
-    height: 0;
+    width: 0;
+    max-width: 10rem;
+    top: 70px;
+    right: 0;
     overflow: hidden;
-    transition: 0.3s;
-    background-color: rgba(72, 72, 72, 0.7);
+    transition: .75s;
+    background-color: rgba(72, 72, 72);
+    text-align: right;
+    z-index: 10;
+    opacity: 0;
 }
 
 .hover_open li {
     padding: 4px;
+    border-bottom: 1px solid white;
+}
+.hover_open li:hover {
+    border-bottom: none;
 }
 
-.header_hover:hover .hover_open {
-    height: 13em;
+.header_hover:hover .hover_open,
+.header_hover ul:hover .hover_open {
+    width: 50%;
+    padding: 16px;
+    opacity: 1;
 }
 
 @media screen and (max-width : 800px) {

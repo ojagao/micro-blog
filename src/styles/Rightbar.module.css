@@ -76,6 +76,9 @@
     width: 90%;
     margin: 0 auto;
 }
+.tag:hover {
+    transform: translateY(-3px);
+}
 .tag_area {
     margin-top: 40px;
 }

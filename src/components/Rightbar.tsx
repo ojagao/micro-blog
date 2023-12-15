@@ -12,7 +12,6 @@ interface RightbarProps {
 }
 
 const Rightbar: React.FC<RightbarProps> = ({ category, tag, contentHeight }) => {
-
     return (
         <div className={styles.rightbar}>
             <div className={styles.rightbar_inner}>
@@ -28,7 +27,7 @@ const Rightbar: React.FC<RightbarProps> = ({ category, tag, contentHeight }) => 
                         <p>ー Shall We Follow ー</p>
                         <div className={styles.sns_icons}>
                             <Icon.Twitter />
-                            <Icon.GitHub />
+                            <Link href={`https://github.com/OjagaO`}><Icon.GitHub /></Link>
                         </div>
                     </div>
                 </div>
@@ -47,10 +46,10 @@ const Rightbar: React.FC<RightbarProps> = ({ category, tag, contentHeight }) => 
                     <ul>
                         <li className={`${styles.flex_wrap} ${styles.tag_box}`}>
                             {tag.map((tagItem) => (
-                                <div className={`${styles.tag} ${styles.flex_center}`} key={tagItem.tag}>
+                                <Link className={`${styles.tag} ${styles.flex_center}`} href={`/tag/${tagItem.id}`} key={tagItem.tag}>
                                     <Icon.Tag className={styles.tag_svg} />
                                     <p>{tagItem.tag}</p>
-                                </div>
+                                </Link>
                             ))}
                         </li>
                     </ul>

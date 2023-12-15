@@ -6,7 +6,7 @@ export interface Blogs {
     content: string;
     eyecatch: { url: string };
     category: { name: string };
-    tag: { tag: string }[];
+    tag: { tag: string ,id: string}[];
     publishedAt: string;
     name: string;
 }
@@ -19,6 +19,10 @@ export interface Categories {
 export interface Tags {
     id: string;
     tag: string ;
+}
+
+export interface AllTags {
+    tag: { tag: string ,id: string}[];
 }
 
 export interface Context {
