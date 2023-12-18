@@ -41,6 +41,9 @@
     align-items: center;
     justify-content: center;
 }
+.my_picture img {
+    border-radius: 24px;
+}
 .my_name {
     font-size: 20px;
     text-align: center;

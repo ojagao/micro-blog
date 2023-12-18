@@ -1,4 +1,5 @@
 import Header from "@/components/header";
+import Head from "next/head";
 import { client } from "../../libs/client";
 import Image from "next/image";
 import Rightbar from "@/components/Rightbar";
@@ -27,6 +28,13 @@ export default function BlogId({ blogs, category, tag }: { blogs: Blogs; categor
     }, []);
     return (
         <>
+            <Head>
+                <title>{blogs.title}</title>
+                <meta name="description" content="他の方々の助けになれば嬉しいなという想いでAIを触ったりプログラミングをしたり、Web系エンジニアを目指す中で気づいたことを共有します" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                {/* 決まっていないアイコン */}
+                <link rel="icon" href="/images/AI.png" />
+            </Head>
             <Header category={category} />
             <div className={styles.contents_inner}>
                 <main className={styles.contents_main}>

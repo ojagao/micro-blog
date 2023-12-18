@@ -17,7 +17,7 @@ const Rightbar: React.FC<RightbarProps> = ({ category, tag, contentHeight }) => 
             <div className={styles.rightbar_inner}>
                 <div className={styles.my_card}>
                     <div className={styles.my_picture}>
-                        <Image src="/images/my_picture.png" alt="" width={100} height={100} priority />
+                        <Image src="/images/my_picture.jpg" alt="" width={100} height={100} priority />
                     </div>
                     <div className={styles.my_name}>
                         <h4>H.Aso</h4>
@@ -27,7 +27,7 @@ const Rightbar: React.FC<RightbarProps> = ({ category, tag, contentHeight }) => 
                         <p>ー Shall We Follow ー</p>
                         <div className={styles.sns_icons}>
                             <Icon.Twitter />
-                            <Link href={`https://github.com/OjagaO`}><Icon.GitHub /></Link>
+                            <Link href={`https://github.com/OjagaO`} target="_blank"><Icon.GitHub /></Link>
                         </div>
                     </div>
                 </div>

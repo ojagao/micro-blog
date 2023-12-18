@@ -22,7 +22,7 @@ const Header = ({ category }: { category: Categories[] }) => {
                     </li>
                     <li className={styles.header_hover}>
                         <Link href="/" className={styles.header_link}>
-                            カテゴリー
+                            カテゴリー ∨
                         </Link>
                         <div className={hoverOpenClass}>
                             <ul>
