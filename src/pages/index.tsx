@@ -18,7 +18,7 @@ export default function Home({ blog, category, tag, totalCount }: { blog: Blogs[
     return (
         <>
             <Head>
-                <title>AI・Web・Programingを学ぼう</title>
+                <title>AI・Web・Programmingを学ぼう</title>
                 <meta name="description" content="他の方々の助けになれば嬉しいなという想いでAIを触ったりプログラミングをしたり、Web系エンジニアを目指す中で気づいたことを共有します" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 {/* 決まっていないアイコン */}

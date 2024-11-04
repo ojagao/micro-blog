@@ -10,7 +10,7 @@ const Footer = () => {
                     <p>
                         AI <br />
                         Web <br />
-                        Programing
+                        Programming
                     </p>
                 </div>
                 <nav className={styles.footer_nav}>
@@ -30,7 +30,7 @@ const Footer = () => {
                     </ul>
                 </nav>
             </div>
-            <p className={styles.copyright}>Copyright © AI Web Programing All rights reserved.</p>
+            <p className={styles.copyright}>Copyright © AI Web Programming All rights reserved.</p>
         </footer>
     );
 };

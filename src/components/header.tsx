@@ -12,7 +12,7 @@ const Header = ({ category }: { category: Categories[] }) => {
             <nav className={styles.nav_bar}>
                 <Link className={styles.icon_box} href="/">
                     <Image src="/images/AI.png" alt="icon" width={50} height={50} priority />
-                    <h1 className={styles.h1}>AI・Web・Programingを学ぼう</h1>
+                    <h1 className={styles.h1}>AI・Web・Programmingを学ぼう</h1>
                 </Link>
                 <ul className={styles.link_list}>
                     <li>
