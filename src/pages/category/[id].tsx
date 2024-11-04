@@ -24,7 +24,7 @@ export default function CategoryId({ blogs, totalCount, category, tag }: { blogs
             <Header category={category} />
             <div className={styles.contents_inner}>
                 <article className={styles.contents_main}>
-                    {blogs ? <p className={styles.article_list}>{blogs[0]?.category.name ?? ""}の記事の一覧</p> : <p>記事の一覧</p>}
+                    {blogs ? <p className={styles.article_list}>{blogs[0]?.category.name ?? ""}の記事の一覧</p> : <p className={styles.article_list}>記事の一覧</p>}
                     <ul>
                         {blogs?.map((blog) => (
                             <Link href={`/blog/${blog.id}`} key={blog.id}>

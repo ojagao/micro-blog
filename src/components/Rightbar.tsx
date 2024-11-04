@@ -22,7 +22,7 @@ const Rightbar: React.FC<RightbarProps> = ({ category, tag, contentHeight }) => 
                     <div className={styles.my_name}>
                         <h4>H.Aso</h4>
                     </div>
-                    <p className={styles.my_description}>札幌のデザイン会社でWEBの更新、LPの作成などを行いながらフロント領域を学習中</p>
+                    <p className={styles.my_description}>未経験から、自己学習を重ねて東京でWebエンジニアとして働いている</p>
                     <div className={styles.sns_card}>
                         <p>ー Shall We Follow ー</p>
                         <div className={styles.sns_icons}>

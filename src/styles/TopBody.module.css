@@ -6,8 +6,12 @@
     letter-spacing: 0.05em;
     font-weight: 900;
     display: inline-block;
-    border-bottom: 2px solid;
-    padding: 2px 12px;
+    padding: 6px 40px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: inset 4px 4px 16px #aeaeae,
+                inset -4px -4px 16px #ffffff;
+    letter-spacing: 0.1em;
 }
 .article_card {
     display: flex;
