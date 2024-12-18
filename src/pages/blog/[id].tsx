@@ -42,7 +42,7 @@ export default function BlogId({ blogs, category, tag }: { blogs: Blogs; categor
                     <div className={styles.article_inner}>
                         <h2 className={styles.article_title}>{blogs.title}</h2>
                         <div className={styles.flex_center}>
-                            <time className={styles.date}>{blogs.publishedAt.slice(0, 10).replace(/-/g, "/")}</time>
+                            <time className={styles.date}>{blogs.updatedAt.slice(0, 10).replace(/-/g, "/")}</time>
                             <span className={styles.flex_center}>
                                 {blogs.tag.map((tagItem) => (
                                     <div className={`${styles.tag} ${styles.flex_center}`} key={tagItem.tag}>

@@ -31,7 +31,7 @@ const TopBody = ({ blogs, totalCount }: { blogs: Blogs[]; totalCount: number }) 
                                     </div>
                                     <div className={`${styles.flex_center} ${styles.mt_12}`}>
                                         <Icon.Clock />
-                                        <time className={styles.date}>{blog.publishedAt.slice(0, 10).replace(/-/g, "/")}</time>
+                                        <time className={styles.date}>{blog.updatedAt.slice(0, 10).replace(/-/g, "/")}</time>
                                     </div>
                                 </div>
                                 {/* <div className="blog-content" dangerouslySetInnerHTML={{ __html: blog.content }} /> */}

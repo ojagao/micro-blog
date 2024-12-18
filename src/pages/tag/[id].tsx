@@ -69,7 +69,7 @@ export default function CategoryId({ blogs, totalCount, category, tag }: { blogs
                                         </div>
                                         <div className={`${styles.flex_center} ${styles.mt_12}`}>
                                             <Icon.Clock />
-                                            <time className={styles.date}>{blog.publishedAt.slice(0, 10).replace(/-/g, "/")}</time>
+                                            <time className={styles.date}>{blog.updatedAt.slice(0, 10).replace(/-/g, "/")}</time>
                                         </div>
                                     </div>
                                 </li>

@@ -76,8 +76,8 @@
 .category_name {
     padding: 8px 0 8px 12px;
     border-radius: 12px;
-    -webkit-box-shadow: 8px 8px 18px #b3b3b3, -8px -8px 18px #f2f2f2;
-    box-shadow: 8px 8px 18px #b3b3b3, -8px -8px 18px #f2f2f2;
+    -webkit-box-shadow: 8px 8px 8px #b3b3b3, -8px -8px 8px #f2f2f2;
+    box-shadow: 8px 8px 8px #b3b3b3, -8px -8px 8px #f2f2f2;
     width: 90%;
     margin: 12px auto;
     transition: .5s;

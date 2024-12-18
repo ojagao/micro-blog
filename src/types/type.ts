@@ -7,7 +7,7 @@ export interface Blogs {
     eyecatch: { url: string };
     category: { name: string };
     tag: { tag: string ,id: string}[];
-    publishedAt: string;
+    updatedAt: string;
     name: string;
 }
 
