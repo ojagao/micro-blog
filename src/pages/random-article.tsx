@@ -14,7 +14,7 @@ import ReactDOM from 'react-dom';
 interface Article extends Blogs {}
 
 const Card = ({ position, blog, onClick }: { position: [number, number, number]; blog: Blogs; onClick: () => void }) => {
-  const meshRef = useRef<THREE.Mesh>();
+  const meshRef = useRef<THREE.Mesh | null>(null);
   const [isRevealed, setIsRevealed] = useState(false);
   const [isContentVisible, setIsContentVisible] = useState(false);
   const { gl } = useThree();
@@ -109,7 +109,7 @@ const Card = ({ position, blog, onClick }: { position: [number, number, number];
 
 const Scene = ({ blogs }: { blogs: Blogs[] }) => {
   const router = useRouter();
-  const groupRef = useRef<THREE.Group>();
+  const groupRef = useRef<THREE.Group | null>(null);
   const { camera } = useThree();
   const [targetRotation, setTargetRotation] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
