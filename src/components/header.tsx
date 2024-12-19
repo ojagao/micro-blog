@@ -20,9 +20,14 @@ const Header = ({ category }: { category: Categories[] }) => {
                             記事一覧
                         </Link>
                     </li>
+                    <li>
+                        <Link className={styles.header_link} href="/random-article">
+                            ランダム記事
+                        </Link>
+                    </li>
                     <li className={styles.header_hover}>
                         <Link href="/" className={styles.header_link}>
-                            カテゴリー ∨
+                            カテゴリー
                         </Link>
                         <div className={hoverOpenClass}>
                             <ul>
