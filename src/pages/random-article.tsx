@@ -8,8 +8,6 @@ import Header from "../components/header";
 import { Blogs } from "@/types/type";
 import styles from "../../src/styles/random-article.module.css";
 import Image from "next/image";
-import html2canvas from 'html2canvas';
-import ReactDOM from 'react-dom';
 
 interface Article extends Blogs {}
 
@@ -202,6 +200,13 @@ const Scene = ({ blogs }: { blogs: Blogs[] }) => {
     return (event as MouseEvent).clientX;
   };
 
+  const getEventY = (event: MouseEvent | TouchEvent): number => {
+    if ("touches" in event) {
+      return event.touches[0]?.clientY || 0;
+    }
+    return (event as MouseEvent).clientY;
+  };
+
   const handleStart = (event: MouseEvent | TouchEvent) => {
     setIsDragging(true);
     setPreviousX(getEventX(event));
@@ -228,11 +233,12 @@ const Scene = ({ blogs }: { blogs: Blogs[] }) => {
 
     if (!isMoving && timeDiff < 200) {
       const clientX = getEventX(event);
-      const elements = document.elementsFromPoint(clientX, event.clientY || 0);
+      const clientY = getEventY(event);
+      const elements = document.elementsFromPoint(clientX, clientY);
       const cardElement = elements.find((el) => el.closest(".article_card"));
       if (cardElement) {
         const cardDiv = cardElement.closest(".article_card") as HTMLElement;
-        const articleId = cardDiv?.dataset.articleId;
+        const articleId = cardDiv.dataset.articleId;
         if (articleId) {
           router.push(`/blog/${articleId}`);
         }
