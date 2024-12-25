@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, Suspense, useCallback } from "react";
+import { useEffect, useRef, useState, Suspense, useCallback, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
 import * as THREE from "three";
@@ -285,12 +285,29 @@ const Scene = ({ blogs }: { blogs: Blogs[] }) => {
   );
 };
 
-const RandomArticle = ({ blogs, categories }: { blogs: Blogs[]; categories: any[] }) => {
-  const [dpr, setDpr] = useState(1);
+// ランダムな記事を選択する関数
+const getRandomArticles = (articles: Blogs[], count: number): Blogs[] => {
+  // 記事が指定数より少ない場合は、全ての記事を返す
+  if (articles.length <= count) {
+    return articles;
+  }
 
-  useEffect(() => {
-    setDpr(window.devicePixelRatio || 1);
-  }, []);
+  // Fisher-Yatesアルゴリズムを使用してシャッフル
+  const shuffled = [...articles];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    // ランダムなインデックスを生成（0からiまで）
+    const j = Math.floor(Math.random() * (i + 1));
+    // 要素を交換
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  // 最初のcount個の要素を返す
+  return shuffled.slice(0, count);
+};
+
+const RandomArticle = ({ blogs, categories }: { blogs: Blogs[]; categories: any[] }) => {
+  // 10個のランダムな記事を選択
+  const selectedBlogs = useMemo(() => getRandomArticles(blogs, 10), [blogs]);
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
@@ -306,7 +323,6 @@ const RandomArticle = ({ blogs, categories }: { blogs: Blogs[]; categories: any[
           depth: true,
           logarithmicDepthBuffer: true,
         }}
-        dpr={dpr}
         linear
         flat
         style={{
@@ -318,7 +334,7 @@ const RandomArticle = ({ blogs, categories }: { blogs: Blogs[]; categories: any[
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1} />
         <Suspense fallback={null}>
-          <Scene blogs={blogs} />
+          <Scene blogs={selectedBlogs} />
         </Suspense>
       </Canvas>
     </div>
@@ -330,11 +346,9 @@ export default RandomArticle;
 export const getStaticProps = async () => {
   const [blogsData, categoriesData] = await Promise.all([client.get({ endpoint: "blogs" }), client.get({ endpoint: "categories" })]);
 
-  const shuffledBlogs = [...blogsData.contents].sort(() => Math.random() - 0.5).slice(0, 10);
-
   return {
     props: {
-      blogs: shuffledBlogs,
+      blogs: blogsData.contents,
       categories: categoriesData.contents,
     },
     revalidate: 60,
